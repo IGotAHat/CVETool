@@ -16,7 +16,7 @@ function FetchCVE() {// Fetch API to call the CVE files from the Server host
     {
       x = z.toString().padStart(4, '0');
       console.log(x);
-      Fetch(i, x, document.getElementById("Search_Check").value)
+      Fetch(i, x)
 
       Total ++
     }
@@ -40,30 +40,31 @@ function SaveToFile(){// save function results in incomplete output, not sure wh
   console.log(document.getElementById("container").innerHTML); // Grab the HTML
   a.click(); // Trigger a click on the element
 };     
-function Fetch(CVE, ID, search){
+function Fetch(CVE, ID){
   fetch('https://raw.githubusercontent.com/IGotAHat/CVEDB/main/data/CVE-'+CVE+'-'+ID+'.json')
       .then(response => response.json())
       .then(data => {
          //let arr = JSON.parse(data);
         //console.log(arr);
         var CVEST = "";
-        switch (document.getElementById('CVE_Select').value) {
+        if (document.getElementById('CVSS').checked === true){
+        switch (document.getElementById('CVSS_Select').value) {
           case "CVSS_V3_Exploit":
-            if (parseInt(JSON.stringify(data.impact.baseMetricV3.exploitabilityScore)) >= search){
+            if (parseInt(JSON.stringify(data.impact.baseMetricV3.exploitabilityScore)) >= document.getElementById("Search_Check_CVSS").value){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V3 Exploitability score: ' +JSON.stringify(data.impact.baseMetricV3.exploitabilityScore, undefined, 10) + "\n\n"
             }
             break;
 
           case "CVSS_V3_Impact":
-            if (parseInt(JSON.stringify(data.impact.baseMetricV3.impactScore)) >= search){
+            if (parseInt(JSON.stringify(data.impact.baseMetricV3.impactScore)) >= document.getElementById("Search_Check_CVSS").value){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
              CVEST += 'V3 Impact score: ' +JSON.stringify(data.impact.baseMetricV3.impactScore, undefined, 10) + "\n\n"
             }
             break;
           
           case "CVSS_V3_Base_Score":
-            if (parseInt(JSON.stringify(data.impact.baseMetricV3.cvssV3.baseScore)) >= search){
+            if (parseInt(JSON.stringify(data.impact.baseMetricV3.cvssV3.baseScore)) >= document.getElementById("Search_Check_CVSS").value){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V3 Base score: ' +JSON.stringify(data.impact.baseMetricV3.cvssV3.baseScore, undefined, 10) + "\n\n"
             }
@@ -77,42 +78,42 @@ function Fetch(CVE, ID, search){
             break;
 
           case "CVSS_V3_Severity":
-            if (JSON.stringify(data.impact.baseMetricV3.cvssV3.baseSeverity) == '\"'+search.toString+'\"'){
+            if (JSON.stringify(data.impact.baseMetricV3.cvssV3.baseSeverity) == '\"'+document.getElementById("Search_Check_CVSS").value.toString+'\"'){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V3 Severity Score: ' +JSON.stringify(data.impact.baseMetricV3.cvssV3.baseSeverity, undefined, 10) + "\n\n"
             }
             break;
           
           case "CVSS_V2_Exploit":
-            if (parseInt(JSON.stringify(data.impact.baseMetricV2.exploitabilityScore)) >= search){
+            if (parseInt(JSON.stringify(data.impact.baseMetricV2.exploitabilityScore)) >= document.getElementById("Search_Check_CVSS").value){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
-              CVEST += 'V3 Exploitability score: ' +JSON.stringify(data.impact.baseMetricV2.exploitabilityScore, undefined, 10) + "\n\n"
+              CVEST += 'V2 Exploitability score: ' +JSON.stringify(data.impact.baseMetricV2.exploitabilityScore, undefined, 10) + "\n\n"
             }
             break;
 
           case "CVSS_V2_Impact":
-            if (parseInt(JSON.stringify(data.impact.baseMetricV2.impactScore)) >= search){
+            if (parseInt(JSON.stringify(data.impact.baseMetricV2.impactScore)) >= document.getElementById("Search_Check_CVSS").value){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V2 Impact score: ' + JSON.stringify(data.impact.baseMetricV2.impactScore, undefined, 10) + "\n\n"
             }
             break;
           
           case "CVSS_V2_Base_Score":
-            if (parseInt(data.impact.baseMetricV2.cvssV2.baseScore) >= search){
+            if (parseInt(data.impact.baseMetricV2.cvssV2.baseScore) >= document.getElementById("Search_Check_CVSS").value){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V2 Base score: ' + JSON.stringify(data.impact.baseMetricV2.cvssV2.baseScore, undefined, 10) + "\n\n"
             }
             break;
 
           case "CVSS_V2_Access":
-            if (JSON.stringify(data.impact.baseMetricV2.cvssV2.accessVector =='\"'+search.toString+'\"')){
+            if (JSON.stringify(data.impact.baseMetricV2.cvssV2.accessVector =='\"'+document.getElementById("Search_Check_CVSS").value.toString+'\"')){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V2 Access Vector: ' + JSON.stringify(data.impact.baseMetricV2.cvssV2.accessVector, undefined, 10) + "\n\n"
             }
             break;
 
           case "CVSS_V2_Severity":
-            if (JSON.stringify(data.impact.baseMetricV2.severity) == '\"'+search.toString+'\"'){
+            if (JSON.stringify(data.impact.baseMetricV2.severity) == '\"'+document.getElementById("Search_Check_CVSS").value.toString+'\"'){
               CVEST += "---- "+CVE+"-"+ID+" ---- \n";
               CVEST += 'V2 Severity Score: ' + JSON.stringify(data.impact.baseMetricV2.severity, undefined, 10) + "\n\n"
             }
@@ -120,6 +121,21 @@ function Fetch(CVE, ID, search){
 
           default:
             break;
+        }
+        }
+        if (document.getElementById('CPE').checked === true){
+          switch (document.getElementById('CPE_Select').value) {
+            case "CPE_Vulnerable":
+              CVEST += JSON.stringify(data.configurations.nodes.cpe_match.vulnerable, undefined, 10) + "\n\n";
+              break;
+
+            case "CPE_Uri":
+              CVEST += JSON.stringify(data.configurations.nodes.cpe_match.cpe23Uri, undefined, 10) + "\n\n";
+              break;
+
+            default:
+              break;
+          }
         }
         console.log('After Update');// debug logs to make sure we are hitting parts of the program
         Save = CVEST;

@@ -12,7 +12,16 @@
     <input type = "button" onclick = "ClearContainer()" value = "Clear">
     <input id = "Save" type = "button" onclick = "SaveToFile()" value = "Save" style="margin-bottom: 5px;">
     <br>
-    <select name="CVE_Select" id="CVE_Select" style="margin-top: 5px;">
+    <input type="checkbox" id="CPE" name="CPE" style="float: left;">
+    <select name="CPE_Select" id="CPE_Select" style="margin-top: 5px;">
+      <option value="CPE_Vulnerable">CPE Vulnerable</option>
+      <option value="CPE_Uri">CPE Uri</option>
+      
+    </select>
+    <input type="text" name="Search_Check_CPE" id="Search_Check_CPE" placeholder="Search" style="margin-left: 5px;">
+    <br>
+    <input type="checkbox" id="CVSS" name="CVSS" style="float: left;">
+    <select name="CVSS_Select" id="CVSS_Select" style="margin-top: 5px;">
       <option value="CVSS_V3_Exploit">V3 Exploit Score</option>
       <option value="CVSS_V3_Impact">V3 Impact Score</option>
       <option value="CVSS_V3_Base_Score">V3 Base Score</option>
@@ -26,7 +35,7 @@
       <option value="CVSS_V2_Severity">V2 Severity Score (LOW, MEDIUM, HIGH)</option>
       
     </select>
-    <input type="text" name="Search_Check" id="Search_Check" placeholder="Search" style="margin-left: 5px;">
+    <input type="text" name="Search_Check_CVSS" id="Search_Check_CVSS" placeholder="Search" style="margin-left: 5px;">
     <br>
     <pre id="container"></pre>
     <pre hidden id="save container"></pre>
