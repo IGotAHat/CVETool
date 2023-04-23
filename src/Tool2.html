@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <script src="Tool2.js"></script>
+  </head>
+  <body>
+    <a href="../Main Page.html" class="buttonClass">Back to Main Page</a>
+    <br>
+    <input type="text" name="CVE-YR-1" id="CVE-YR-1" placeholder="Start Year" style="margin-top: 5px;">
+    <input type="text" name="CVE-YR-2" id="CVE-YR-2" placeholder="End Year">
+    <br>
+    <input type = "button" onclick = "DateCVE()" value = "Run" style="margin-top: 5px;">  
+    <input type = "button" onclick = "ClearContainer()" value = "Clear">
+    <input id = "Save" type = "button" onclick = "SaveToFile()" value = "Save">  
+    <pre id="container" style="margin-top: 5px;"></pre>
+    <pre hidden id="save container"></pre>
+  </body>
+</html>

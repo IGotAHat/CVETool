@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="Tool3.js"></script>
+  </head>
+  <body>
+    <a href="../Main Page.html" class="buttonClass">Back to Main Page</a>
+    <br>
+    <input type="text" name="CVE-YR-1" id="CVE-YR-1" placeholder="Start Year" style="margin-top: 5px;">
+    <input type="text" name="CVE-YR-2" id="CVE-YR-2" placeholder="End Year">
+    <br>
+    <input type = "button" onclick = "FetchCVE()" value = "Run" style="margin-top: 5px;">  
+    <input type = "button" onclick = "ClearContainer()" value = "Clear">
+    <input id = "Save" type = "button" onclick = "SaveToFile()" value = "Save" style="margin-bottom: 5px;">
+    <br>
+    <select name="CVE_Select" id="CVE_Select" style="margin-top: 5px;">
+      <option value="CVSS_V3_Exploit">V3 Exploit Score</option>
+      <option value="CVSS_V3_Impact">V3 Impact Score</option>
+      <option value="CVSS_V3_Base_Score">V3 Base Score</option>
+      <option value="CVSS_V3_Attack">V3 Attack Vector (LOCAL, NETWORK)</option>
+      <option value="CVSS_V3_Severity">V3 Severity Score (LOW, MEDIUM, HIGH)</option>
+
+      <option value="CVSS_V2_Exploit">V2 Exploit Score</option>
+      <option value="CVSS_V2_Impact">V2 Impact Score</option>
+      <option value="CVSS_V2_Base_Score">V2 Base Score</option>
+      <option value="CVSS_V2_Access">V2 Access Vector (LOCAL, NETWORK, ADJACENT_NETWORK)</option>
+      <option value="CVSS_V2_Severity">V2 Severity Score (LOW, MEDIUM, HIGH)</option>
+      
+    </select>
+    <input type="text" name="Search_Check" id="Search_Check" placeholder="Search" style="margin-left: 5px;">
+    <br>
+    <pre id="container"></pre>
+    <pre hidden id="save container"></pre>
+  </body>
+</html>

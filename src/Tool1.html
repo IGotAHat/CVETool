@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script src="Tool1.js"></script>
+  </head>
+  <body>
+    <a href="../Main Page.html" class="buttonClass">Back to Main Page</a>
+    <br>
+    <input type="text" name="CVE-YR" id="CVE-YR" placeholder="Year of release" style="margin-top: 5px;">
+    <input type="text" name="CVE-ID" id="CVE-ID" placeholder="ID Number">
+    <br>
+    <input type = "button" onclick = "FetchCVE()" value = "Run" style="margin-top: 5px;">  
+    <input type = "button" onclick = "ClearContainer()" value = "Clear">
+    <input id = "Save" type = "button" onclick = "SaveToFile()" value = "Save"style="margin-bottom: 5px;">  
+    <br>
+    <input type="checkbox" id="CVEtoggle" name="CVE" value = "true" onclick=checktick(this) style="float: left; margin-top: 5px;" checked>
+    <div style="margin-left: 25px;">CVE infomation</div>
+    <div style="margin-left: 25px;">
+      <input type="checkbox" id="CVE_DataType" name="CVE_DataType" value = "true" style="float: left;" checked>
+      <p>CVE Data Type</p>
+      <input type="checkbox" id="CVE_DataFormat" name="CVE_DataFormat" value = "true" style="float: left;" checked>
+      <p>CVE Data Format</p>
+      <input type="checkbox" id="CVE_DataVersion" name="CVE_DataVersion" value = "true" style="float: left;" checked>
+      <p>CVE Data Version</p>
+      <input type="checkbox" id="CVE_DataMeta" name="CVE_DataMeta" value = "true" style= "float: left;" checked>
+      <p>CVE Meta Data</p>
+      <div style="margin-left: 25px;">
+        <input type="checkbox" id="CVE_DataMeta_ID" name="CVE_ID" value = "true" style= "float: left;" checked>
+        <p>CVE ID</p>
+        <input type="checkbox" id="CVE_DataMeta_Assigner" name="CVE_Assigner" value = "true" style= "float: left;" checked>
+        <p>CVE Assigner</p>
+      </div>
+    </div>
+    <br>
+    <input type="checkbox" id="CVSStoggle" name="CVSS" value = "true" style="float: left;" checked>
+    <div style="margin-left: 25px;">CVSS infomation</div>
+    <br>
+    <input type="checkbox" id="CPEtoggle" name="CPE" value = "true" style="float: left; margin-top: 5px;" checked>
+    <div style="margin-left: 25px;">CPE infomation</div>
+    </div>
+    <br>
+    <pre id="container"></pre>
+    <table id="CVEtable"></table>
+  </body>
+</html>

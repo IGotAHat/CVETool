@@ -1,0 +1,10 @@
+Proof of cencept
+
+- Interpret CVE JSON in plain text
+
+- Count and present based on search
+
+- Visualisation, Graph over years, Vuln counts, Chart.js?
+
+- CVE top 10 - Literary reviews
+
