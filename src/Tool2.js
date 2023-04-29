@@ -16,15 +16,16 @@ async function DateCVE()
   // fetch('src/data/CVE-'+CVDate+'-'+CVID+'.json')
   for (i = CV1; i <= CV2; i++)
   {
+    if (CV1 >= 2018){
+      Count = 20000;
+    }
     for(z = 0; z < Count; z++)
     {
       x = z.toString().padStart(4, '0');
       console.log(x);
       CheckCVE(CV1, x)
     }
-    if (CV1 >= 2018){
-      Count = 20000;
-    }
+    
   }
 }
 function ClearContainer(){// Clears page of information

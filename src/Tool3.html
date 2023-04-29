@@ -12,6 +12,18 @@
     <input type = "button" onclick = "ClearContainer()" value = "Clear">
     <input id = "Save" type = "button" onclick = "SaveToFile()" value = "Save" style="margin-bottom: 5px;">
     <br>
+    <input type="checkbox" id="CVE" name="CVE" style="float: left;">
+    <select name="CVE_Select" id="CVE_Select" style="margin-top: 5px;">
+      <option value="CVE_All">CVE All</option>
+      <option value="CVE_Type">CVE Type</option>
+      <option value="CVE_Format">CVE Format</option>
+      <option value="CVE_Version">CVE Version</option>
+      <option value="CVE_Meta">CVE Meta Data</option>
+      <option value="CVE_ID">CVE ID</option>
+      <option value="CVE_Assigner">CVE Assigner</option>
+      
+    </select>
+    <br>
     <input type="checkbox" id="CPE" name="CPE" style="float: left;">
     <select name="CPE_Select" id="CPE_Select" style="margin-top: 5px;">
       <option value="CPE_Vulnerable">CPE Vulnerable</option>

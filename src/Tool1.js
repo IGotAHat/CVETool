@@ -50,7 +50,7 @@ function FetchCVE() {// Fetch API to call the CVE files from the Server host
         }
         
         //CVEST = CVEST.replace(/ |[|]|{|}|#/g, "");
-        CVEST = CVEST.replace(/  |{|}|[\|]|#/g, "");
+        CVEST = CVEST.replace(/  |"|{|}|[\|]|#/g, "");
         CVEST = CVEST.replace(/^[\s\t]*(\r\n|\n|\r|,\n|,\r|]\n)/gm, "")
         document.getElementById('container').innerHTML += CVEST;
         console.log('After Update');// debug logs to make sure we are hitting parts of the program
